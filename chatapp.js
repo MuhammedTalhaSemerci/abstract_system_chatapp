@@ -83,7 +83,7 @@ app.get('/api', (req, res) => {
       res.send(JSON.stringify(live_stream_chat));
       break;
     case "saved_live_stream_all_messages":
-      res.sendFile(__dirname+"/live_stream/live_stream_all_messages.json");
+      res.sendFile(__dirname+"/live_stream/live_stream_all_messages_permitted.json");
     
       break;
     case "private_all_messages":
@@ -253,7 +253,6 @@ setInterval(() => {
 
 
   chat_file_backup('./live_stream_messages/live_stream_chat_all_messages.json',live_stream_chat_wopermission);
-  live_stream_chat_wopermission = [];
 
   chat_file_backup('./info_desk_messages/common_chat_messages.json',common_chat);
   common_chat = [];
@@ -264,8 +263,6 @@ setInterval(() => {
 
 setInterval(() => {
   chat_file_backup('./live_stream_messages/live_stream_all_messages_permitted.json',live_stream_chat);
-  live_stream_chat = [];
-
   private_chat_file_backup('./private_chat/private_chat_all_messages.json',private_chat);
 }, 3*60*60*1000);
 
